@@ -18,8 +18,8 @@ These notebooks load raw observational datasets and interpolate profiles onto a 
 
 | Notebook | Description |
 |---|---|
-| `load_interp_ARGO_data_clean.ipynb` | Load and preprocess cleaned ARGO profiles |
-| `load_interp_ARGO_data_interp.ipynb` | Interpolate ARGO profiles onto standard depth levels |
+| `load_interp_ARGO_data_clean.ipynb` | Load and preprocess ARGO profiles |
+| `load_interp_ARGO_data_interp.ipynb` | Load and preprocess ARGO profiles with a lot of QC==b'8' and for which we have under ice trajectories|
 | `load_interp_BGEP_CTD.ipynb` | Process Beaufort Gyre Exploration Project (BGEP) CTD data |
 | `load_interp_CORA_data.ipynb` | Load and interpolate CORA hydrographic profiles |
 | `load_interp_ICES_data.ipynb` | Process ICES Arctic hydrographic observations |
