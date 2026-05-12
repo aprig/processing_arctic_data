@@ -2,7 +2,7 @@
 
 This repository contains a collection of Jupyter notebooks for loading, cleaning, interpolating, quality controlling, and processing Arctic Ocean in-situ hydrographic observations from multiple observational programs and databases.
 
-The workflow is designed to create harmonized temperature (`TEMP`) and salinity (`PSAL`) profile datasets suitable for climate variability studies, thermohaline structure analysis, and anomaly computations in the Arctic Ocean.
+The workflow is designed to create harmonized temperature (`TEMP`) and salinity (`PSAL`) profile datasets of the Arctic Ocean.
 
 ---
 
@@ -14,7 +14,7 @@ The processing pipeline is organized into multiple levels.
 
 ## 1. Data Loading and Interpolation
 
-These notebooks load raw observational datasets and interpolate profiles onto a common vertical grid.
+These notebooks load raw observational datasets and interpolate profiles onto a common vertical grid and concatenate the data.
 
 | Notebook | Description |
 |---|---|
@@ -34,6 +34,24 @@ These notebooks load raw observational datasets and interpolate profiles onto a 
 
 Initial quality-control procedures to identify and remove duplicate temperature and salinity profiles.
 
+Duplicate profiles originating from multiple observational databases are resolved using the following source priority hierarchy:
+
+```python
+SOURCE_PRIORITY = {
+
+    "ARGO":      0,
+    "ITP":       1,
+    "NABOS_ctd": 2,
+    "BGEP_ctd":  3,
+    "UDASH":     4,
+    "ICES":      5,
+    "WOD":       6,
+    "CORA":      7,
+}
+```
+
+Lower priority values indicate datasets that are preferentially retained when duplicate profiles are detected.
+
 | Notebook | Description |
 |---|---|
 | `process_data_level1_check_for_duplicates_psal_new_final.ipynb` | Detect duplicate salinity profiles |
@@ -43,31 +61,31 @@ Initial quality-control procedures to identify and remove duplicate temperature 
 
 ## 3. Level-2 Processing: Quality Control
 
-Advanced profile-level quality control and removal of suspicious or bad profiles.
+ Quality control and removal of suspicious or bad profiles. The QC is done first on the profiles within 3˚ by 150 km boxes. Outliers or bad profiles are identified if they fall outside median +/- 5 std.
 
 | Notebook | Description |
 |---|---|
-| `process_data_level2_PSAL.ipynb` | Salinity profile quality control |
+| `process_data_level2_PSAL.ipynb` | Remove outliers |
 | `process_data_level2_PSAL_remove_bad_profile.ipynb` | Remove problematic salinity profiles |
-| `process_data_level2_TEMP.ipynb` | Temperature profile quality control |
+| `process_data_level2_TEMP.ipynb` | Remove outliers |
 | `process_data_level2_TEMP_remove_bad_profiles.ipynb` | Remove problematic temperature profiles |
 
 ---
 
 ## 4. Level-3 Processing: Common Temperature–Salinity Dataset
 
-Construction of a consistent dataset containing common temperature and salinity profiles.
+Construction of a consistent dataset containing common temperature and salinity profiles. Common profiles are found using lon, lat, time.
 
 | Notebook | Description |
 |---|---|
-| `process_data_level3_take_common_TS_profiles.ipynb` | Generate common T/S profiles |
-| `process_data_level3_take_common_TS_bad_profiles_removed.ipynb` | Generate common T/S dataset after QC filtering |
+| `process_data_level3_take_common_TS_profiles.ipynb` | Generate common T/S profiles after outlier filtering |
+| `process_data_level3_take_common_TS_bad_profiles_removed.ipynb` | Generate common T/S dataset after profile filtering |
 
 ---
 
 ## 5. Level-4 Processing: Anomaly Computation
 
-Compute anomalies relative to the ISAS climatology/reference dataset.
+Compute anomalies relative to the ISAS climatology/reference dataset. The climatology is colocated to the position of each profile using bi-linear interpolation.
 
 | Notebook | Description |
 |---|---|
@@ -78,26 +96,12 @@ Compute anomalies relative to the ISAS climatology/reference dataset.
 
 ## 6. Level-5 Processing: Detrending
 
-Remove long-term trends from anomaly fields for variability analysis.
+Remove long-term trends from anomaly fields for variability analysis. Only significant trends are removed.
 
 | Notebook | Description |
 |---|---|
 | `process_data_level5_detrend_anomalies_psal.ipynb` | Detrend salinity anomalies |
 | `process_data_level5_detrend_anomalies_temp.ipynb` | Detrend temperature anomalies |
-
----
-
-# Scientific Objectives
-
-This processing framework is intended for:
-
-- Arctic Ocean hydrographic analysis
-- Temperature and salinity variability studies
-- Water mass transformation studies
-- Thermohaline structure analysis
-- Climate variability and trend detection
-- Arctic freshwater content studies
-- Comparison with ocean reanalyses and climate models
 
 ---
 
@@ -114,83 +118,4 @@ The repository integrates observations from several major Arctic observing syste
 - UDASH
 - WOD23
 
----
 
-# Typical Workflow
-
-Recommended execution order:
-
-```text
-1. Load and interpolate raw datasets
-2. Remove duplicate profiles
-3. Perform quality control
-4. Build common T/S datasets
-5. Compute anomalies relative to ISAS
-6. Detrend anomalies
-```
-
----
-
-# Requirements
-
-Typical Python packages used in the notebooks include:
-
-```python
-xarray
-numpy
-scipy
-pandas
-matplotlib
-netCDF4
-gsw
-cartopy
-cmocean
-dask
-```
-
-Install dependencies using:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# Output Products
-
-The pipeline produces:
-
-- Quality-controlled Arctic hydrographic profiles
-- Interpolated temperature and salinity fields
-- Common T/S datasets
-- Temperature anomalies
-- Salinity anomalies
-- Detrended anomaly datasets
-
-These outputs can be used for downstream climate diagnostics and oceanographic analyses.
-
----
-
-# Notes
-
-- Some notebooks may require access to locally stored observational datasets.
-- Paths to raw data may need to be updated depending on your system configuration.
-- Intermediate NetCDF files are generated between processing levels.
-
----
-
-# Citation
-
-If you use this repository in scientific work, please cite the relevant observational datasets and associated publications.
-
----
-
-# License
-
-Specify your preferred license here (e.g., MIT, GPL-3.0, Apache-2.0).
-
----
-
-# Contact
-
-For questions, issues, or collaboration opportunities, please open a GitHub issue or contact the repository maintainer.
