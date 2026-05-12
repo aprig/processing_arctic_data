@@ -61,7 +61,7 @@ Lower priority values indicate datasets that are preferentially retained when du
 
 ## 3. Level-2 Processing: Quality Control
 
- Quality control and removal of suspicious or bad profiles. The QC is done first on the profiles within 3˚ by 150 km boxes. Outliers or bad profiles are identified if they fall outside median +/- 5 std.
+ Quality control and removal of suspicious or bad profiles. The QC is done first on the profiles within 3˚ by 150 km boxes. Outliers or bad profiles are identified if they fall outside median +/- 5 std. Then the QC is per basins. 
 
 | Notebook | Description |
 |---|---|
@@ -69,6 +69,7 @@ Lower priority values indicate datasets that are preferentially retained when du
 | `process_data_level2_PSAL_remove_bad_profile.ipynb` | Remove problematic salinity profiles |
 | `process_data_level2_TEMP.ipynb` | Remove outliers |
 | `process_data_level2_TEMP_remove_bad_profiles.ipynb` | Remove problematic temperature profiles |
+| `define_mask.ipynb` | Generate masks for the different regions and basins of the Arctic Ocean |
 
 ---
 
