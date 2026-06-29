@@ -110,18 +110,18 @@ Remove long-term trends from anomaly fields for variability analysis. Only signi
 
 ---
 
-# Datasets Included
+# Datasets Included (Links accessed on the 29/06/2026 )
 
 The repository integrates observations from several major Arctic observing systems:
 
 - ARGO
-- BGEP
+- BGEP https://www2.whoi.edu/site/beaufortgyre/data/ctd-and-geochemistry/
 - MEOP https://meop.net/database/
-- CORA 
-- ICES
-- ITP
-- NABOS
-- UDASH
-- WOD23
+- CORA https://data.marine.copernicus.eu/product/INSITU_GLO_PHY_TS_DISCRETE_MY_013_001/description
+- ICES https://www.ices.dk/Pages/default.aspx
+- ITP https://www2.whoi.edu/site/itp/data/
+- NABOS https://uaf-iarc.org/nabos/data/
+- UDASH https://doi.pangaea.de/10.1594/PANGAEA.872931
+- WOD23 https://www.ncei.noaa.gov/products/world-ocean-database
 
 
