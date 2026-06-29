@@ -29,6 +29,7 @@ These notebooks load raw observational datasets and interpolate profiles onto a 
 | `load_interp_NABOS_CTD.ipynb` | Process NABOS CTD observations |
 | `load_interp_UDASH_data.ipynb` | Load and interpolate UDASH Arctic observations |
 | `load_interp_WOD23_data.ipynb` | Process World Ocean Database 2023 (WOD23) profiles |
+| `load_interp_MEOP_data.ipynb` | Process Marine Mammals Exploring the Oceans Pole to Pole (MEOP) profiles |
 
 ---
 
@@ -45,10 +46,11 @@ SOURCE_PRIORITY = {
     "ITP":       1,
     "NABOS_ctd": 2,
     "BGEP_ctd":  3,
-    "UDASH":     4,
-    "ICES":      5,
-    "WOD":       6,
-    "CORA":      7,
+    "MEOP":      4,
+    "UDASH":     5,
+    "ICES":      6,
+    "WOD":       7,
+    "CORA":      8,
 }
 ```
 
@@ -114,7 +116,8 @@ The repository integrates observations from several major Arctic observing syste
 
 - ARGO
 - BGEP
-- CORA
+- MEOP https://meop.net/database/
+- CORA 
 - ICES
 - ITP
 - NABOS
