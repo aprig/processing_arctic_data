@@ -14,22 +14,23 @@ The processing pipeline is organized into multiple levels.
 
 ## 1. Data Loading and Interpolation
 
-These notebooks load raw observational datasets and interpolate profiles onto a common vertical grid and concatenate the data.
+These notebooks load raw observational datasets and interpolate profiles onto a the vertical grid of ISAS and concatenate the data.
 
 | Notebook | Description |
 |---|---|
-| `load_interp_ARGO_data_clean.ipynb` | Load and preprocess ARGO profiles |
-| `load_interp_ARGO_data_interp.ipynb` | Load and preprocess ARGO profiles with a lot of QC==b'8' and for which we have under ice trajectories|
-| `read_BGEP_CTD_to_netcdf.ipynb` | Read BGEP .cnv file and save to yearly .nc files  |
-| `load_interp_BGEP_CTD.ipynb` | Process Beaufort Gyre Exploration Project (BGEP) CTD data |
-| `load_interp_CORA_data.ipynb` | Load and interpolate CORA hydrographic profiles |
+| `load_interp_ARGO_data_clean_ISAS.ipynb` | Load and preprocess ARGO profiles |
+| `load_interp_ARGO_data_interp_ISAS.ipynb` | Load and preprocess ARGO profiles with a lot of QC==b'8' and for which we have under ice trajectories|
+| `read_BGEP_CTD_to_netcdf_ISAS.ipynb` | Read BGEP .cnv file and save to yearly .nc files  |
+| `load_interp_BGEP_CTD_ISAS.ipynb` | Process Beaufort Gyre Exploration Project (BGEP) CTD data |
+| `load_interp_CORA_data_ISAS.ipynb` | Load and interpolate CORA hydrographic profiles |
 | `read_ICES_CTD_to_netcdf.ipynb` | Read ICES .csv file and save to yearly .nc files  |
-| `load_interp_ICES_data.ipynb` | Process ICES Arctic hydrographic observations |
-| `load_interp_ITP_data.ipynb` | Load and interpolate Ice-Tethered Profiler (ITP) data |
-| `load_interp_NABOS_CTD.ipynb` | Process NABOS CTD observations |
-| `load_interp_UDASH_data.ipynb` | Load and interpolate UDASH Arctic observations |
-| `load_interp_WOD23_data.ipynb` | Process World Ocean Database 2023 (WOD23) profiles |
-| `load_interp_MEOP_data.ipynb` | Process Marine Mammals Exploring the Oceans Pole to Pole (MEOP) profiles |
+| `load_interp_ICES_data_ISAS.ipynb` | Process ICES Arctic hydrographic observations |
+| `load_interp_ITP_data_ISAS.ipynb` | Load and interpolate Ice-Tethered Profiler (ITP) data |
+| `load_interp_NABOS_CTD_ISAS.ipynb` | Process NABOS CTD observations |
+| `load_interp_UDASH_data_ISAS.ipynb` | Load and interpolate UDASH Arctic observations |
+| `load_interp_WOD23_data_ISAS.ipynb` | Process World Ocean Database 2023 (WOD23) profiles |
+| `load_interp_MEOP_data_ISAS.ipynb` | Process Marine Mammals Exploring the Oceans Pole to Pole (MEOP) profiles |
+| `load_interp_MOSAic_data_ISAS.ipynb` | Process MOSAiC profiles |
 
 ---
 
@@ -41,16 +42,17 @@ Duplicate profiles originating from multiple observational databases are resolve
 
 ```python
 SOURCE_PRIORITY = {
-
+    
     "ARGO":      0,
     "ITP":       1,
     "NABOS_ctd": 2,
     "BGEP_ctd":  3,
     "MEOP":      4,
-    "UDASH":     5,
-    "ICES":      6,
-    "WOD":       7,
-    "CORA":      8,
+    "MOSAiC":    5,
+    "UDASH":     6,
+    "ICES":      7,
+    "WOD":       8,
+    "CORA":      9,
 }
 ```
 
@@ -58,8 +60,8 @@ Lower priority values indicate datasets that are preferentially retained when du
 
 | Notebook | Description |
 |---|---|
-| `process_data_level1_check_for_duplicates_psal_new_final.ipynb` | Detect duplicate salinity profiles |
-| `process_data_level1_check_for_duplicates_temp_new_final.ipynb` | Detect duplicate temperature profiles |
+| `process_data_level1_check_for_duplicates_psal_new_final_ISAS.ipynb` | Detect duplicate salinity profiles |
+| `process_data_level1_check_for_duplicates_temp_new_final_ISAS.ipynb` | Detect duplicate temperature profiles |
 
 ---
 
@@ -69,10 +71,10 @@ Lower priority values indicate datasets that are preferentially retained when du
 
 | Notebook | Description |
 |---|---|
-| `process_data_level2_PSAL.ipynb` | Remove outliers |
-| `process_data_level2_PSAL_remove_bad_profile.ipynb` | Remove problematic salinity profiles |
-| `process_data_level2_TEMP.ipynb` | Remove outliers |
-| `process_data_level2_TEMP_remove_bad_profiles.ipynb` | Remove problematic temperature profiles |
+| `process_data_level2_PSAL_ISAS.ipynb` | Remove outliers |
+| `process_data_level2_PSAL_remove_bad_profile_ISAS.ipynb` | Remove problematic salinity profiles |
+| `process_data_level2_TEMP_ISAS.ipynb` | Remove outliers |
+| `process_data_level2_TEMP_remove_bad_profiles_ISAS.ipynb` | Remove problematic temperature profiles |
 | `define_mask.ipynb` | Generate masks for the different regions and basins of the Arctic Ocean |
 
 ---
