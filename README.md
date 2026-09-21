@@ -125,5 +125,6 @@ The repository integrates observations from several major Arctic observing syste
 - NABOS https://uaf-iarc.org/nabos/data/
 - UDASH https://doi.pangaea.de/10.1594/PANGAEA.872931
 - WOD23 https://www.ncei.noaa.gov/products/world-ocean-database
+- MOSAiC https://arcticdata.io/catalog/view/doi%3A10.18739%2FA21J9790B
 
 
